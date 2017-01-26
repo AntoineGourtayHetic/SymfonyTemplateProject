@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class StudentRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function findAllOrderByName(){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT student FROM AppBundle:Student ORDER BY student.firstname ASC'
+            )
+            ->getResult();
+    }
 }
