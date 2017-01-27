@@ -13,11 +13,12 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @return array
      */
-    public function studentQuery(){
-
-        $studentRepo = $this->getDoctrine()->getRepository('AppBundle:Student');
-        return $this->render('student/unemethode.html.twig', [
-            'students' => $studentRepo->uneMethode(),
-        ]);
+    public function uneMethode()
+    {
+        $query = $this->createQueryBuilder('student_repository')
+            ->addOrderBy('student_repository.dateOfBirth', 'DESC')
+            ->getQuery()
+        ;
+        return $query->getResult();
     }
 }
