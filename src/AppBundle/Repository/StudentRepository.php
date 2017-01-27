@@ -13,11 +13,11 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
     /**
      * @return array
      */
-    public function findAllOrderByName(){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT student FROM AppBundle:Student ORDER BY student.firstname ASC'
-            )
-            ->getResult();
+    public function studentQuery(){
+
+        $studentRepo = $this->getDoctrine()->getRepository('AppBundle:Student');
+        return $this->render('student/unemethode.html.twig', [
+            'students' => $studentRepo->uneMethode(),
+        ]);
     }
 }
