@@ -24,6 +24,7 @@ class StudentRepository extends \Doctrine\ORM\EntityRepository
 
     public function displayAges()
     {
+        $timeIsOnMySide = $this->
         $all = $this->findAll();
         return $all;
     }
